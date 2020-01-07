@@ -1,0 +1,26 @@
+body {
+  background-color: skyblue; }
+
+.header-container {
+  margin: 0 auto;
+  width: 1000px;
+  display: flex; }
+
+h3 {
+  width: 1000px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  font-size: 25px; }
+
+h1 {
+  text-align: center; }
+
+canvas {
+  margin: 0 auto;
+  display: block;
+  background-image: url("/src/assets/images/lake-dusk.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvc3R5bGVzL2luZGV4LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7QUFDQSw0QkFBNEI7O0FBRTVCO0FBQ0E7QUFDQTtBQUNBLGdCQUFnQjs7QUFFaEI7QUFDQTtBQUNBO0FBQ0E7QUFDQSxrQkFBa0I7O0FBRWxCO0FBQ0EscUJBQXFCOztBQUVyQjtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0EseUJBQXlCIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGJhY2tncm91bmQtY29sb3I6IHNreWJsdWU7IH1cblxuLmhlYWRlci1jb250YWluZXIge1xuICBtYXJnaW46IDAgYXV0bztcbiAgd2lkdGg6IDEwMDBweDtcbiAgZGlzcGxheTogZmxleDsgfVxuXG5oMyB7XG4gIHdpZHRoOiAxMDAwcHg7XG4gIG1hcmdpbjogMCBhdXRvO1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICBmb250LXNpemU6IDI1cHg7IH1cblxuaDEge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7IH1cblxuY2FudmFzIHtcbiAgbWFyZ2luOiAwIGF1dG87XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBiYWNrZ3JvdW5kLWltYWdlOiB1cmwoXCIvc3JjL2Fzc2V0cy9pbWFnZXMvbGFrZS1kdXNrLmpwZ1wiKTtcbiAgYmFja2dyb3VuZC1yZXBlYXQ6IG5vLXJlcGVhdDtcbiAgYmFja2dyb3VuZC1zaXplOiBjb3ZlcjsgfVxuIl0sInNvdXJjZVJvb3QiOiIifQ==*/

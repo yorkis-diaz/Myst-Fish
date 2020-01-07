@@ -5,13 +5,14 @@ class StandardFish {
         this.width = 30
         this.height = 25
         this.score = 20
+        this.type = "standard"
         this.direction = Math.floor(Math.random() * 2)
         this.dx = 1 + Math.floor(Math.random() * 2);
         this.fishImage = new Image
         if (this.direction === 0) {
-            this.fishImage.src = "/images/right-fish.png"
+            this.fishImage.src = "/src/assets/images/right-fish.png";
         } else {
-            this.fishImage.src = "/images/left-fish.png"
+            this.fishImage.src = "/src/assets/images/left-fish.png";
         }
     this.id = Math.random() * 10000;
     }
@@ -21,13 +22,13 @@ class StandardFish {
             this.x = this.x + this.dx
             if (this.x >= 950) {
                 this.direction = 1
-                this.fishImage.src = "/images/left-fish.png";
+                this.fishImage.src = "/src/assets/images/left-fish.png";
             }
         } else {
             this.x = this.x - this.dx
             if (this.x <= 10) {
                 this.direction = 0
-                this.fishImage.src = "/images/right-fish.png";
+                this.fishImage.src = "/src/assets/images/right-fish.png";
             }
         }
     }
@@ -53,14 +54,15 @@ class MediumFish {
     this.y = 330 + Math.random() * 120;
     this.width = 80;
     this.height = 39;
-    this.score = 100
+    this.score = 100;
+    this.type = "medium";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/images/right-medium-fish.png";
+      this.fishImage.src = "/src/assets/images/right-medium-fish.png";
     } else {
-      this.fishImage.src = "/images/left-medium-fish.png";
+      this.fishImage.src = "/src/assets/images/left-medium-fish.png";
     }
     this.id = Math.random() * 10000;
   }
@@ -70,13 +72,13 @@ class MediumFish {
       this.x = this.x + this.dx;
       if (this.x + 40 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/images/left-medium-fish.png";
+        this.fishImage.src = "/src/assets/images/left-medium-fish.png";
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/images/right-medium-fish.png";
+        this.fishImage.src = "/src/assets/images/right-medium-fish.png";
       }
     }
   }
@@ -103,14 +105,15 @@ class MystFish {
     this.y = 330 + Math.random() * 120;
     this.width = 150;
     this.height = 40;
-    this.score = 500
+    this.score = 500;
+    this.type = "myst";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/images/right-myst-fish.png";
+      this.fishImage.src = "/src/assets/images/right-myst-fish.png";
     } else {
-      this.fishImage.src = "/images/left-myst-fish.png";
+      this.fishImage.src = "/src/assets/images/left-myst-fish.png";
     }
     this.id = Math.random() * 10000;
   }
@@ -119,13 +122,13 @@ class MystFish {
       this.x = this.x + this.dx;
       if (this.x + 95 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/images/left-myst-fish.png";
+        this.fishImage.src = "/src/assets/images/left-myst-fish.png";
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/images/right-myst-fish.png";
+        this.fishImage.src = "/src/assets/images/right-myst-fish.png";
       }
     }
   }
@@ -172,7 +175,7 @@ function DrawFish(ctx, spacePressed, rod) {
         fish.moveFish();
         if (spacePressed) {
             const collided = fish.detectCollision({x: rod.x, y: rod.y})
-            if (collided && rod.score < 1000) {
+            if (collided && fish.type === "standard" && rod.score < 500) {
                 rod.score = rod.score + fish.score
                 delete FishArray[fish.id]
                 const respawn1 = new StandardFish
