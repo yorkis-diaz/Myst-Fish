@@ -1,0 +1,28 @@
+body {
+    background-color: skyblue;
+}
+
+.header-container {
+    margin: 0 auto;
+    width: 1000px;
+    display: flex;
+}
+
+h3 {
+    width: 1000px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+h1 {
+    text-align: center;
+}
+
+canvas {
+    margin: 0 auto;
+    display: block;
+    background-image: url("/images/lake-dusk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
