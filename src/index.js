@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 60
+  let timerSecs = 59
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
@@ -42,6 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
     start: true
   }
   
+  // if (gameStart.start) Timer(timer, timerSecs, rod);
   
   
   
@@ -52,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.drawImage(background, 0, 0)
     rod.drawRod(ctx)
     DrawFish(ctx, spacePressed, rod)
-    if (gameStart.start) Timer(timer, timerSecs, rod)
+    // if (gameStart.start) Timer(timer, timerSecs, rod)
     debugger
     document.onkeydown = e => {
       switch (e.keyCode) {
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           return;
         }
+        // if (gameStart.start) Timer(timer, timerSecs, rod);
         requestAnimationFrame(draw)
         
       }
@@ -131,8 +133,9 @@ document.addEventListener("DOMContentLoaded", () => {
         debugger
         if (e.keyCode === 83) {
           if (gameStart.start) {
-            draw();
             delete gameStart["start"]
+            Timer(timer, timerSecs, rod);
+            draw();
           }
         }
       })

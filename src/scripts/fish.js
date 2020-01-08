@@ -9,7 +9,7 @@ class StandardFish {
         this.height = 25
         this.score = 20
         this.type = "standard"
-        this.time = 20
+        this.time = 2
         this.direction = Math.floor(Math.random() * 2)
         this.dx = 1 + Math.floor(Math.random() * 2);
         this.fishImage = new Image
@@ -59,7 +59,7 @@ class MediumFish {
     this.width = 80;
     this.height = 39;
     this.score = 100;
-    this.time = 2
+    this.time = 5
     this.type = "medium";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
@@ -93,8 +93,8 @@ class MediumFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.x >= this.x &&
-      rod.x <= fishTotalLength &&
+      rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -111,7 +111,7 @@ class MystFish {
     this.width = 150;
     this.height = 40;
     this.score = 500;
-    this.time = 5
+    this.time = 10
     this.type = "myst";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
@@ -173,7 +173,7 @@ function respawnMystFish() {
   setTimeout(() => {
     const mystFish = new MystFish();
     FishArray[mystFish.id] = mystFish;
-  }, 10000)
+  }, 15000)
 }
 
 
