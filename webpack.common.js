@@ -53,7 +53,19 @@ module.exports = {
                 "sass-loader",
                 "postcss-loader"
             ]
-        }
+        },
+        {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    publicPath: "./"
+                }
+            }
+            
+            ],
+        },
+        
         ]
     },
     plugins: [new MiniCssExtractPlugin({

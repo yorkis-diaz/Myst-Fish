@@ -1,3 +1,6 @@
+import rightFish from "../assets/images/right-fish.png";
+import leftFish from "../assets/images/left-fish.png";
+
 class StandardFish {
     constructor () {
         this.x = 10 + Math.random() * 940;
@@ -10,9 +13,9 @@ class StandardFish {
         this.dx = 1 + Math.floor(Math.random() * 2);
         this.fishImage = new Image
         if (this.direction === 0) {
-            this.fishImage.src = "/src/assets/images/right-fish.png";
+            this.fishImage.src = rightFish;
         } else {
-            this.fishImage.src = "/src/assets/images/left-fish.png";
+            this.fishImage.src = leftFish;
         }
     this.id = Math.random() * 10000;
     }
@@ -22,13 +25,13 @@ class StandardFish {
             this.x = this.x + this.dx
             if (this.x >= 950) {
                 this.direction = 1
-                this.fishImage.src = "/src/assets/images/left-fish.png";
+                this.fishImage.src = leftFish;
             }
         } else {
             this.x = this.x - this.dx
             if (this.x <= 10) {
                 this.direction = 0
-                this.fishImage.src = "/src/assets/images/right-fish.png";
+                this.fishImage.src = rightFish;
             }
         }
     }
@@ -150,41 +153,73 @@ class MystFish {
 }
 
 
+const levelChecker = {
+  level3: false
+}
 
 const FishArray = {}
 
 for (let i = 0; i < 10; ++i) {
-    const standardFish = new StandardFish;
-    FishArray[standardFish.id] = standardFish
+  const standardFish = new StandardFish;
+  FishArray[standardFish.id] = standardFish
 }
 
-// const mystFish = new MystFish
-// FishArray[mystFish.id] = mystFish
-// firstMedium = new MediumFish
-// secondMedium = new MediumFish
-// FishArray[firstMedium.id] = firstMedium;
-// FishArray[secondMedium.id] = secondMedium;
+
+
+function respawnMystFish() {
+  setTimeout(() => {
+    const mystFish = new MystFish();
+    FishArray[mystFish.id] = mystFish;
+  }, 10000)
+}
 
 
 
 function DrawFish(ctx, spacePressed, rod) {
-    Object.values(FishArray).forEach(fish => {
-        ctx.beginPath();
-        ctx.drawImage(fish.fishImage, fish.x, fish.y)
-        ctx.closePath();
-        fish.moveFish();
-        if (spacePressed) {
-            const collided = fish.detectCollision({x: rod.x, y: rod.y})
-            if (collided && fish.type === "standard" && rod.score < 500) {
-                rod.score = rod.score + fish.score
-                delete FishArray[fish.id]
-                const respawn1 = new StandardFish
-                const respawn2 = new StandardFish
-                FishArray[respawn1.id] = respawn1
-                FishArray[respawn2.id] = respawn2
-            }
+  if (rod.score >= 1000 && ("level3" in levelChecker)) {
+   levelChecker.level3 = true
+  }
+  if (levelChecker.level3) {
+    const mystFish = new MystFish();
+    FishArray[mystFish.id] = mystFish;
+    delete levelChecker["level3"]
+  }
+
+  Object.values(FishArray).forEach(fish => {
+      ctx.beginPath();
+      ctx.drawImage(fish.fishImage, fish.x, fish.y);
+      ctx.fill();
+      ctx.closePath();
+      fish.moveFish();
+      if (spacePressed) {
+        const collided = fish.detectCollision({x: rod.x, y: rod.y})
+        if (collided && fish.type === "standard") {
+          rod.score = rod.score + fish.score
+          if (rod.score <= 500) {
+            delete FishArray[fish.id];
+            const respawn1 = new StandardFish
+            const respawn2 = new StandardFish
+            FishArray[respawn1.id] = respawn1
+            FishArray[respawn2.id] = respawn2
+          } else {
+            delete FishArray[fish.id];
+            const mediumFish = new MediumFish
+            FishArray[mediumFish.id] = mediumFish 
+          }
         }
-    })
+        if (collided && fish.type === "medium") {
+          rod.score = rod.score + fish.score
+          delete FishArray[fish.id];
+          const respawn1 = new MediumFish
+          FishArray[respawn1.id] = respawn1 
+        }
+        if (collided && fish.type === "myst") {
+          rod.score = rod.score + fish.score;
+          delete FishArray[fish.id];
+          respawnMystFish()
+        }
+      }
+  })
 }
 
-module.exports = DrawFish;
+export default DrawFish;

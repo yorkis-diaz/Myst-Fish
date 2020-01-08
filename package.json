@@ -39,9 +39,13 @@
     "sass-loader": "^8.0.0",
     "style-loader": "^1.1.2",
     "three": "^0.112.1",
+    "url-loader": "^3.0.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
+  },
+  "devDependencies": {
+    "file-loader": "^5.0.2"
   }
 }

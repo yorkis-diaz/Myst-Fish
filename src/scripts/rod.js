@@ -6,7 +6,6 @@ class Rod {
     }
 
     drawRod(ctx) {
-        ctx.clearRect(0, 0, 1000, 500)
         ctx.beginPath();
         ctx.moveTo(0, 250)
         ctx.lineTo(this.x, 250)
@@ -20,4 +19,4 @@ class Rod {
 
 
 
-module.exports = Rod;
+export default Rod;
