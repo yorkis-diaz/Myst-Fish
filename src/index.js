@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   
 
   let x = 250;
-  let y = 300;
+  let y = 200;
   const rod = new Rod(x, y);
   let spacePressed = false
   const gameStart = {
@@ -43,26 +43,46 @@ document.addEventListener("DOMContentLoaded", () => {
     document.onkeydown = e => {
         switch (e.keyCode) {
           case 32:
-            spacePressed = true
+            spacePressed = true;
             break;
-          case 37:
+          case 37: //Left
             rod.x = e.shiftKey === true ? rod.x - 10 : rod.x - 5;
             if (rod.x < 10) rod.x = 10;
             rod.drawRod(ctx);
             break;
-          case 38:
+          case 38: // Up
             rod.y = e.shiftKey === true ? rod.y - 10 : rod.y - 5;
-            if (rod.y < 285) rod.y = 285;
+            if (rod.y < 200) rod.y = 200;
             rod.drawRod(ctx);
             break;
-          case 39:
+          case 39: //Right
             rod.x = e.shiftKey === true ? rod.x + 10 : rod.x + 5;
             if (rod.x > 950) rod.x = 950;
             rod.drawRod(ctx);
             break;
-          case 40:
+          case 40: //Down
             rod.y = e.shiftKey === true ? rod.y + 10 : rod.y + 5;
             if (rod.y > 470) rod.y = 470;
+            rod.drawRod(ctx);
+            break;
+          case 65: // Left
+            rod.x = e.shiftKey === true ? rod.x - 10 : rod.x - 5;
+            if (rod.x < 10) rod.x = 10;
+            rod.drawRod(ctx);
+            break;
+          case 68: // Right
+            rod.x = e.shiftKey === true ? rod.x + 10 : rod.x + 5;
+            if (rod.x > 950) rod.x = 950;
+            rod.drawRod(ctx);
+            break;
+          case 83: // Down
+            rod.y = e.shiftKey === true ? rod.y + 10 : rod.y + 5;
+            if (rod.y > 470) rod.y = 470;
+            rod.drawRod(ctx);
+            break;
+          case 87: // Up
+            rod.y = e.shiftKey === true ? rod.y - 10 : rod.y - 5;
+            if (rod.y < 285) rod.y = 285;
             rod.drawRod(ctx);
             break;
         }
