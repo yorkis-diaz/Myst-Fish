@@ -5,7 +5,6 @@ function Timer (timer, timerSecs, rod) {
     // timer.appendChild(span)
     const timerCountdown = setInterval(() => {
         rod;
-        debugger
         let countdown = `Time: `
         timer.innerText = countdown
         let span = document.createElement("span");
@@ -22,7 +21,6 @@ function Timer (timer, timerSecs, rod) {
 
         timerSecs -= 1
         if(rod.time > 0) rod.time = 0
-        debugger
 
         if (timerSecs === -1) {
             StopInterval()

@@ -93,8 +93,8 @@ class MediumFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.rodX >= this.x &&
-      rod.rodX <= fishTotalLength &&
+      rod.x >= this.x &&
+      rod.x <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -195,7 +195,7 @@ function DrawFish(ctx, spacePressed, rod) {
       ctx.closePath();
       fish.moveFish();
       if (spacePressed) {
-        const collided = fish.detectCollision({x: rod.x, y: rod.y})
+        const collided = fish.detectCollision({x: rod.x, y: rod.y, rodX: rod.rodX})
         if (collided && fish.type === "standard") {
           rod.score = rod.score + fish.score
           rod.time = fish.time

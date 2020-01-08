@@ -54,7 +54,6 @@ document.addEventListener("DOMContentLoaded", () => {
     rod.drawRod(ctx)
     DrawFish(ctx, spacePressed, rod)
     // if (gameStart.start) Timer(timer, timerSecs, rod)
-    debugger
     document.onkeydown = e => {
       switch (e.keyCode) {
           case 32:
@@ -130,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       // draw();
       window.addEventListener("keydown", (e)=> {
-        debugger
         if (e.keyCode === 83) {
           if (gameStart.start) {
             delete gameStart["start"]
