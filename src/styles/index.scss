@@ -1,5 +1,7 @@
 body {
-    background-color: skyblue;
+    background-image: url("../assets/images/full-lake-dusk.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .header-container {
@@ -9,7 +11,6 @@ body {
 }
 
 h3 {
-    width: 1000px;
     margin: 0 auto;
     margin-bottom: 10px;
     font-size: 25px;
@@ -17,6 +18,8 @@ h3 {
 
 h1 {
     text-align: center;
+    width: 1000px;
+    margin: 0 auto;
 }
 
 canvas {
@@ -24,4 +27,26 @@ canvas {
     display: block;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.headers {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+#user-score {
+    width: 50%;
+    text-align: center;
+}
+
+#timer {
+    width: 50%;
+    text-align: center;
+}
+
+#timer > span {
+    width: 40px;
+    display: inline-block;
 }

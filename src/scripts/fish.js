@@ -9,6 +9,7 @@ class StandardFish {
         this.height = 25
         this.score = 20
         this.type = "standard"
+        this.time = 20
         this.direction = Math.floor(Math.random() * 2)
         this.dx = 1 + Math.floor(Math.random() * 2);
         this.fishImage = new Image
@@ -58,6 +59,7 @@ class MediumFish {
     this.width = 80;
     this.height = 39;
     this.score = 100;
+    this.time = 2
     this.type = "medium";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
@@ -109,6 +111,7 @@ class MystFish {
     this.width = 150;
     this.height = 40;
     this.score = 500;
+    this.time = 5
     this.type = "myst";
     this.direction = Math.floor(Math.random() * 2);
     this.dx = 1 + Math.floor(Math.random() * 2);
@@ -195,6 +198,7 @@ function DrawFish(ctx, spacePressed, rod) {
         const collided = fish.detectCollision({x: rod.x, y: rod.y})
         if (collided && fish.type === "standard") {
           rod.score = rod.score + fish.score
+          rod.time = fish.time
           if (rod.score <= 500) {
             delete FishArray[fish.id];
             const respawn1 = new StandardFish
