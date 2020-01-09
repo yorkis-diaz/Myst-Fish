@@ -45,7 +45,6 @@ class StandardFish {
         let collision = false
         const fishTotalLength = this.x + this.width
         const fishTotalHeight = this.y + this.height
-        debugger
         if (rod.rodX >= this.x &&
             rod.rodX <= fishTotalLength &&
             rod.y >= (this.y + 10) &&
