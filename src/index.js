@@ -5,37 +5,45 @@ import splash from "./assets/images/splash-lake-dusk.jpg"
 import backgroundImage from "./assets/images/lake-dusk.jpg";
 import Timer from './scripts/timer';
 import firebase from "firebase";
-import firebaseConfig from './config/firebase'
+import firebaseConfig from './config/firebase';
+import submitScore from './scripts/submit_score';
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  // firebase.initializeApp(firebaseConfig);
-  // firebase.analytics(firebase);
-  // const database = firebase.database();
-  // const ref = database.ref('scores')
-  // let leaderScores = []
-  // ref.on("value", (snapshot) => {
-  //   const allScores = snapshot.val();
-  //   leaderScores.push(allScores)
-  // })
-  // leaderScores.push("hi")
-  // debugger
-  // console.log(leaderScores)
-  // debugger
-  // debugger
-  // const data = {
-  //   score: 20,
-  //   name: "first"
-  // }
-  // ref.push(data)
-  // debugger
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics(firebase);
+  const database = firebase.database();
+  const ref = database.ref('scores')
+  let leaderScores = {}
 
   const canvas = document.getElementById("myCanvas");
   const score = document.getElementById("user-score");
   const timer = document.getElementById("timer");
   const leaderboard = document.getElementById("leaderboard");
 
+  // Database function
+  ref.orderByChild("score").limitToLast(10).on("value", snapshot => {
+    if (leaderboard.childElementCount > 0) {
+      for(let i = leaderboard.childNodes.length - 1; i >= 0; --i) {
+        let child = leaderboard.childNodes[i]
+        leaderboard.removeChild(child)
+      }
+    }
+    leaderScores = {}
+    snapshot.forEach(child => {
+      leaderScores[child.key] = child.val()
+    })
 
+    
+    Object.values(leaderScores).reverse().forEach(child => {
+      const scoreLi = document.createElement('li')
+      scoreLi.innerText = `${child.name} - ${child.score}`
+      leaderboard.appendChild(scoreLi)
+    })
+  });
+  // <<<
+
+  // leaderboard.style.backgroundColor = 'white'
 
   const splashImage = new Image
   splashImage.src = splash
@@ -68,14 +76,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const gameStart = {
     start: false
   }
-
-  // if (gameStart.start) Timer(timer, timerSecs, rod);
   
   
   
   
   function draw() {
-    debugger
     ctx.clearRect(0, 0, 1000, 500);
     score.innerText = `Score: ${rod.score}`
     ctx.drawImage(background, 0, 0)
@@ -159,17 +164,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = requestAnimationFrame(draw)
     if ("gameover" in gameStart) {
       document.onkeydown = null
-      document.onkeydown = null
+      document.onkeyup = null
       cancelAnimationFrame(id)
+      const form = submitScore(ref, rod.score);
+      leaderboard.appendChild(form)
     }
   }
   // draw();
   window.addEventListener("keydown", (e)=> {
-    debugger
     if (e.keyCode === 83) {
-      debugger
       if ("start" in gameStart) {
-        debugger
         gameStart.start = true
         // delete gameStart["gameover"];
         draw();

@@ -21,10 +21,8 @@ function Timer (timer, timerSecs, rod) {
             rod.time = 0
         }
         timerSecs -= 1
-        debugger
 
         if (span.innerText === "00") {
-            debugger
           StopInterval();
         }
     }, 1000);

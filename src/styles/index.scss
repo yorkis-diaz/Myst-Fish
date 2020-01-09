@@ -50,3 +50,26 @@ canvas {
     width: 40px;
     display: inline-block;
 }
+
+.leaderboard-container {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+    background-color: #1E141D;
+    width: 15%;
+    height: 50%;
+}
+
+.leaderboard-container > h1 {
+    color: #FE6C91;
+    width: 100%;
+}
+
+.leaderboard-container > ol {
+    width: 100%;
+}
+
+#leaderboard > li {
+    color: wheat;
+    width: 100%;
+}
