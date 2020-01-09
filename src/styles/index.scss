@@ -2,6 +2,7 @@ body {
     background-image: url("../assets/images/full-lake-dusk.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
 }
 
 .header-container {
@@ -51,6 +52,31 @@ canvas {
     display: inline-block;
 }
 
+#main-content {
+    position: relative;
+}
+
+.score-form {
+   position: absolute;
+   right: 50%;
+   bottom: 45%;
+}
+
+.score-form > input {
+    border: none;
+    padding: 10px;
+    font-size: 35px;
+    color: #C97E44;
+    text-align: center;
+    background: transparent;
+    font-weight: bold;
+}
+
+.score-form > input::placeholder {
+    color: #C97E44;
+    text-align: center;
+}
+
 .leaderboard-container {
     position: absolute;
     bottom: 50px;
@@ -67,9 +93,13 @@ canvas {
 
 .leaderboard-container > ol {
     width: 100%;
+    font-family: Open Sans;
+    font-weight: bold;
 }
 
 #leaderboard > li {
-    color: wheat;
+    color: #C7709A;
     width: 100%;
+    padding: 8px 0;
+    font-size: 20px;
 }

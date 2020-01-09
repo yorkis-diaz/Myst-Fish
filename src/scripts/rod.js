@@ -28,16 +28,6 @@ class Rod {
     }
   }
 
-  // drawRod(ctx) {
-  //     ctx.beginPath();
-  //     ctx.moveTo(0, 250)
-  //     ctx.lineTo(this.x, 250)
-  //     ctx.lineTo(this.x, this.y);s
-  //     ctx.lineWidth = "2"
-  //     ctx.strokeStyle = "yellow"
-  //     ctx.stroke();
-  //     ctx.closePath();
-  // }
   drawRod(ctx) {
     ctx.beginPath();
     ctx.drawImage(this.image, this.x, 200);

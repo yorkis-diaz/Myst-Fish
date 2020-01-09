@@ -3,11 +3,12 @@ function submitScore(ref, score) {
     let name = ""
     const form = document.createElement('form')
     const inputName = document.createElement('input')
-    const submit = document.createElement('button')
+    // const submit = document.createElement('button')
     inputName.type = 'text' 
-    inputName.placeholder = 'Enter Name'
+    inputName.placeholder = 'Enter A Name'
     form.appendChild(inputName)
-    form.appendChild(submit)
+    form.className = "score-form"
+    // form.appendChild(submit)
 
     // inputName.addEventListener('change', (e) => {
     //     debugger
@@ -15,16 +16,16 @@ function submitScore(ref, score) {
     //     name = e.currentTarget.value
     // })
     form.addEventListener('submit', e =>  {
-        debugger
         e.preventDefault();
         name = e.currentTarget.children[0].value;
         const data = {
             name: name,
             score: score
         }
-        ref.push(data)
+        ref.push(data).then(() => {
+            window.location.reload()
+        })
     })
-    debugger
     // form.addEventListener('submit', 
     return form
 }

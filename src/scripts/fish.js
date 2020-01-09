@@ -1,5 +1,9 @@
 import rightFish from "../assets/images/right-fish.png";
 import leftFish from "../assets/images/left-fish.png";
+import leftMyst from "../assets/images/left-myst-fish.png";
+import rightMyst from "../assets/images/right-myst-fish.png";
+import leftMediumFish from "../assets/images/left-medium-fish.png";
+import rightMediumFish from "../assets/images/right-medium-fish.png";
 
 class StandardFish {
     constructor () {
@@ -66,9 +70,9 @@ class MediumFish {
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/src/assets/images/right-medium-fish.png";
+      this.fishImage.src = rightMediumFish;
     } else {
-      this.fishImage.src = "/src/assets/images/left-medium-fish.png";
+      this.fishImage.src = leftMediumFish;
     }
     this.id = Math.random() * 10000;
   }
@@ -78,13 +82,13 @@ class MediumFish {
       this.x = this.x + this.dx;
       if (this.x + 40 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/src/assets/images/left-medium-fish.png";
+        this.fishImage.src = leftMediumFish;
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/src/assets/images/right-medium-fish.png";
+        this.fishImage.src = rightMediumFish;
       }
     }
   }
@@ -118,9 +122,9 @@ class MystFish {
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/src/assets/images/right-myst-fish.png";
+      this.fishImage.src = rightMyst;
     } else {
-      this.fishImage.src = "/src/assets/images/left-myst-fish.png";
+      this.fishImage.src = leftMyst;
     }
     this.id = Math.random() * 10000;
   }
@@ -129,13 +133,13 @@ class MystFish {
       this.x = this.x + this.dx;
       if (this.x + 95 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/src/assets/images/left-myst-fish.png";
+        this.fishImage.src = leftMyst;
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/src/assets/images/right-myst-fish.png";
+        this.fishImage.src = rightMyst;
       }
     }
   }

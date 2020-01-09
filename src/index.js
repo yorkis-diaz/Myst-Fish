@@ -7,6 +7,7 @@ import Timer from './scripts/timer';
 import firebase from "firebase";
 import firebaseConfig from './config/firebase';
 import submitScore from './scripts/submit_score';
+import checkScores from './scripts/check_scoreboard';
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const score = document.getElementById("user-score");
   const timer = document.getElementById("timer");
   const leaderboard = document.getElementById("leaderboard");
+  const mainContent = document.getElementById("main-content")
 
   // Database function
   ref.orderByChild("score").limitToLast(10).on("value", snapshot => {
@@ -42,8 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   });
   // <<<
+  // mainContent.append(submitScore(ref, 7));
 
-  // leaderboard.style.backgroundColor = 'white'
 
   const splashImage = new Image
   splashImage.src = splash
@@ -51,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 3
+  let timerSecs = 59
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
@@ -156,18 +158,24 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.fillText("Game Over", 300, 150);
       ctx.closePath();
     } 
-    // if ("start" in gameStart) {
-    //   delete gameStart["start"]
-    //   Timer(timer, timerSecs, rod);
-    // }
+    
+
 
     const id = requestAnimationFrame(draw)
     if ("gameover" in gameStart) {
       document.onkeydown = null
       document.onkeyup = null
       cancelAnimationFrame(id)
-      const form = submitScore(ref, rod.score);
-      leaderboard.appendChild(form)
+      if (!checkScores(leaderScores, rod.score)) {
+        ctx.beginPath();
+        ctx.fillStyle = "#FE9D48";
+        ctx.font = "48px Permanent Marker";
+        ctx.fillText("NEW HIGH SCORE!", 200, 80);
+        ctx.closePath();
+        const form = submitScore(ref, rod.score);
+        mainContent.appendChild(form)
+      }
+      
     }
   }
   // draw();
