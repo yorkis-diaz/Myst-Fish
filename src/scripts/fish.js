@@ -41,8 +41,9 @@ class StandardFish {
         let collision = false
         const fishTotalLength = this.x + this.width
         const fishTotalHeight = this.y + this.height
-        if (rod.x >= this.x &&
-            rod.x <= fishTotalLength &&
+        debugger
+        if (rod.rodX >= this.x &&
+            rod.rodX <= fishTotalLength &&
             rod.y >= (this.y + 10) &&
             rod.y <= fishTotalHeight
             ) {
@@ -93,8 +94,8 @@ class MediumFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.x >= this.x &&
-      rod.x <= fishTotalLength &&
+      rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -144,8 +145,8 @@ class MystFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.x >= this.x &&
-      rod.x <= fishTotalLength &&
+      rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -199,12 +200,16 @@ function DrawFish(ctx, spacePressed, rod) {
         if (collided && fish.type === "standard") {
           rod.score = rod.score + fish.score
           rod.time = fish.time
-          if (rod.score <= 500) {
+          if (rod.score <= 200) {
             delete FishArray[fish.id];
             const respawn1 = new StandardFish
             const respawn2 = new StandardFish
             FishArray[respawn1.id] = respawn1
             FishArray[respawn2.id] = respawn2
+          } else if (rod.score >= 201 && rod.score <= 400) {
+            delete FishArray[fish.id];
+            const respawn1 = new StandardFish
+            FishArray[respawn1.id] = respawn1
           } else {
             delete FishArray[fish.id];
             const mediumFish = new MediumFish
