@@ -1,5 +1,9 @@
 import rightFish from "../assets/images/right-fish.png";
 import leftFish from "../assets/images/left-fish.png";
+import leftMyst from "../assets/images/left-myst-fish.png";
+import rightMyst from "../assets/images/right-myst-fish.png";
+import leftMediumFish from "../assets/images/left-medium-fish.png";
+import rightMediumFish from "../assets/images/right-medium-fish.png";
 
 class StandardFish {
     constructor () {
@@ -41,8 +45,8 @@ class StandardFish {
         let collision = false
         const fishTotalLength = this.x + this.width
         const fishTotalHeight = this.y + this.height
-        if (rod.x >= this.x &&
-            rod.x <= fishTotalLength &&
+        if (rod.rodX >= this.x &&
+            rod.rodX <= fishTotalLength &&
             rod.y >= (this.y + 10) &&
             rod.y <= fishTotalHeight
             ) {
@@ -65,9 +69,9 @@ class MediumFish {
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/src/assets/images/right-medium-fish.png";
+      this.fishImage.src = rightMediumFish;
     } else {
-      this.fishImage.src = "/src/assets/images/left-medium-fish.png";
+      this.fishImage.src = leftMediumFish;
     }
     this.id = Math.random() * 10000;
   }
@@ -77,13 +81,13 @@ class MediumFish {
       this.x = this.x + this.dx;
       if (this.x + 40 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/src/assets/images/left-medium-fish.png";
+        this.fishImage.src = leftMediumFish;
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/src/assets/images/right-medium-fish.png";
+        this.fishImage.src = rightMediumFish;
       }
     }
   }
@@ -93,8 +97,8 @@ class MediumFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.x >= this.x &&
-      rod.x <= fishTotalLength &&
+      rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -117,9 +121,9 @@ class MystFish {
     this.dx = 1 + Math.floor(Math.random() * 2);
     this.fishImage = new Image();
     if (this.direction === 0) {
-      this.fishImage.src = "/src/assets/images/right-myst-fish.png";
+      this.fishImage.src = rightMyst;
     } else {
-      this.fishImage.src = "/src/assets/images/left-myst-fish.png";
+      this.fishImage.src = leftMyst;
     }
     this.id = Math.random() * 10000;
   }
@@ -128,13 +132,13 @@ class MystFish {
       this.x = this.x + this.dx;
       if (this.x + 95 >= 950) {
         this.direction = 1;
-        this.fishImage.src = "/src/assets/images/left-myst-fish.png";
+        this.fishImage.src = leftMyst;
       }
     } else {
       this.x = this.x - this.dx;
       if (this.x <= 10) {
         this.direction = 0;
-        this.fishImage.src = "/src/assets/images/right-myst-fish.png";
+        this.fishImage.src = rightMyst;
       }
     }
   }
@@ -144,8 +148,8 @@ class MystFish {
     const fishTotalLength = this.x + this.width;
     const fishTotalHeight = this.y + this.height;
     if (
-      rod.x >= this.x &&
-      rod.x <= fishTotalLength &&
+      rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
       rod.y >= this.y + 10 &&
       rod.y <= fishTotalHeight
     ) {
@@ -199,12 +203,16 @@ function DrawFish(ctx, spacePressed, rod) {
         if (collided && fish.type === "standard") {
           rod.score = rod.score + fish.score
           rod.time = fish.time
-          if (rod.score <= 500) {
+          if (rod.score <= 200) {
             delete FishArray[fish.id];
             const respawn1 = new StandardFish
             const respawn2 = new StandardFish
             FishArray[respawn1.id] = respawn1
             FishArray[respawn2.id] = respawn2
+          } else if (rod.score >= 201 && rod.score <= 400) {
+            delete FishArray[fish.id];
+            const respawn1 = new StandardFish
+            FishArray[respawn1.id] = respawn1
           } else {
             delete FishArray[fish.id];
             const mediumFish = new MediumFish

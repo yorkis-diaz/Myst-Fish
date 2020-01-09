@@ -16,14 +16,14 @@ function Timer (timer, timerSecs, rod) {
         if (rod.time > 0) {
             const newTime = timerSecs + rod.time
             span.innerText = `${newTime < 10 ? `0${newTime}` : newTime}`;
+            timer.appendChild(span)
             timerSecs = newTime
+            rod.time = 0
         }
-
         timerSecs -= 1
-        if(rod.time > 0) rod.time = 0
 
-        if (timerSecs === -1) {
-            StopInterval()
+        if (span.innerText === "00") {
+          StopInterval();
         }
     }, 1000);
 

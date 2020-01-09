@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./dist/main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Permanent+Marker&display=swap" rel="stylesheet">
+    <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
     <title>Myst Fish</title>
 </head>
 <body>
@@ -16,8 +17,16 @@
         <h3 id="user-score">Score: 0</h3>
         <h3 id="timer"></h3>
     </div>
+    <div id="main-content">
+        <canvas id="myCanvas" height="500" width="1000"></canvas>
+    </div>
     
-    <canvas id="myCanvas" height="500" width="1000">
     </canvas>
+    <div class="leaderboard-container">
+        <h1>Leaderboard</h1>
+        <ol id="leaderboard">   
+        </ol> 
+    </div>
+    
 </body>
 </html>
