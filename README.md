@@ -13,7 +13,7 @@ Myst Fish is a fishing game that lets users catch fish until they have caught th
 
 # LOAD PAGE
 
-![game](/images/game.png)
+![game](src/assets/images/game.png)
 
 # Architecture
 
