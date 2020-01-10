@@ -43,12 +43,6 @@ document.addEventListener("DOMContentLoaded", () => {
       leaderboard.appendChild(scoreLi)
     })
   });
-  // <<<
-  // mainContent.append(submitScore(ref, 7));
-
-
-  const splashImage = new Image
-  splashImage.src = splash
 
   const background = new Image();
   background.src = backgroundImage;
