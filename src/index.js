@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
       
-    if (timer.innerText === "Time: 00") {
+    if ((timer.innerText === "Time: 00")) {
       gameStart["gameover"] = true
 
       ctx.clearRect(0, 0, 1000, 500);
