@@ -3,6 +3,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
+    background-color: #1D131D;
 }
 
 .header-container {
@@ -96,6 +97,7 @@ canvas {
     background-color: #1E141D;
     width: 15%;
     height: 60%;
+    overflow: hidden;
 }
 
 .leaderboard-container > h1 {
@@ -124,6 +126,7 @@ canvas {
     bottom: 50px;
     width: 15%;
     height: 60%;
+    overflow: hidden;
 }
 
 .instructions > h1 {
