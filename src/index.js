@@ -167,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.onkeyup = null
       cancelAnimationFrame(id)
       if (!checkScores(leaderScores, rod.score)) {
+        gameStart["score"] = true
         ctx.beginPath();
         ctx.fillStyle = "#FE9D48";
         ctx.font = "48px Permanent Marker";
@@ -175,7 +176,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const form = submitScore(ref, rod.score);
         mainContent.appendChild(form)
       }
-      
     }
   }
   // draw();
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
         gameStart.start = true
         // delete gameStart["gameover"];
         draw();
-      } else if ("gameover" in gameStart) {
+      } else if (("gameover" in gameStart) && (!("score" in gameStart))) {
         window.location.reload();
       }
     }
