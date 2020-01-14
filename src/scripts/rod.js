@@ -2,9 +2,9 @@ import leftFisherman from '../assets/images/left-fisherman.png';
 import rightFisherman from '../assets/images/right-fisherman.png'
 
 class Rod {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
+  constructor() {
+    this.x = 100;
+    this.y = 250;
     this.rodX = this.x
     this.score = 0;
     this.time = 0

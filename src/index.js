@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 59
+  let timerSecs = 3
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
@@ -64,14 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.closePath();
   }
   
-  let x = 100;
-  let y = 250;
-  const rod = new Rod(x, y);
+  // let x = 100;
+  // let y = 250;
+  let rod = new Rod();
   let spacePressed = false
 
-  const gameStart = {
-    start: false
-  }
+  // const gameStart = {
+  //   start: false
+  // }
+
+  let start = false,
+    gameTimer = false,
+    gameover = false,
+    highscore = false
+
   
   
   
@@ -82,8 +88,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.drawImage(background, 0, 0)
     rod.drawRod(ctx)
     DrawFish(ctx, spacePressed, rod)
-    if (gameStart.start) Timer(timer, timerSecs, rod)
-    delete gameStart["start"]
+    if (!gameTimer) {
+      Timer(timer, timerSecs, rod)
+      gameTimer = true
+    }
     document.onkeydown = e => {
       switch (e.keyCode) {
         case 32:
@@ -142,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
       
     if ((timer.innerText === "Time: 00")) {
-      gameStart["gameover"] = true
+      gameover = true
 
       ctx.clearRect(0, 0, 1000, 500);
       ctx.drawImage(background, 0, 0);
@@ -156,12 +164,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     const id = requestAnimationFrame(draw)
-    if ("gameover" in gameStart) {
+    if (gameover) {
       document.onkeydown = null
       document.onkeyup = null
       cancelAnimationFrame(id)
       if (!checkScores(leaderScores, rod.score)) {
-        gameStart["score"] = true
+        highscore = true
         ctx.beginPath();
         ctx.fillStyle = "#FE9D48";
         ctx.font = "48px Permanent Marker";
@@ -172,16 +180,26 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
-  // draw();
+  const gameRestart = () => {
+    rod = new Rod();
+    gameTimer = false,
+    gameover = false,
+    highscore = false
+    timerSecs = 59
+    span.innerText = "60"
+    timer.innerHTML = ""
+    timer.innerText = "Time: ";
+    timer.appendChild(span)
+    // ctx.drawImage(background, 0, 0);
+  }
   window.addEventListener("keydown", (e)=> {
-    if (e.keyCode === 83) {
-      if ("start" in gameStart) {
-        gameStart.start = true
-        // delete gameStart["gameover"];
-        draw();
-      } else if (("gameover" in gameStart) && (!("score" in gameStart))) {
-        window.location.reload();
-      }
+    if (e.keyCode === 83 && !start) {
+      start = true
+      // delete gameStart["gameosver"];
+      draw();
+    } else if (e.keyCode === 82 && (gameover && !highscore)) {
+      gameRestart()
+      draw()
     }
   })
 })
