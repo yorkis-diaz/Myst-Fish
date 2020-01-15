@@ -15,7 +15,7 @@ class StandardFish {
         this.y = 330 + Math.random() * 120;
         this.width = 30
         this.height = 25
-        this.score = 200
+        this.score = 20
         this.type = "standard"
         this.time = 1
         this.alive = true
