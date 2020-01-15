@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 3
+  let timerSecs = 59
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ctx.drawImage(background, 0, 0);
     ctx.beginPath();
     ctx.fillStyle = "#FE9D48";
-    ctx.font = "300 48px Open Sans";
+    ctx.font = "300 48px Permanent Marker";
     ctx.fillText("Press  S  To START", 200, 150);
     ctx.closePath();
   }
@@ -119,26 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
           if (rod.y > 470) rod.y = 470;
           rod.drawRod(ctx);
           break;
-          case 65: // Left
-          rod.x = e.shiftKey === true ? rod.x - 10 : rod.x - 5;
-          if (rod.x < 10) rod.x = 10;
-          rod.drawRod(ctx);
-          break;
-          case 68: // Right
-          rod.x = e.shiftKey === true ? rod.x + 10 : rod.x + 5;
-          if (rod.x > 950) rod.x = 950;
-          rod.drawRod(ctx);
-          break;
-          case 83: // Down
-          rod.y = e.shiftKey === true ? rod.y + 10 : rod.y + 5;
-          if (rod.y > 470) rod.y = 470;
-          rod.drawRod(ctx);
-          break;
-        case 87: // Up
-          rod.y = e.shiftKey === true ? rod.y - 10 : rod.y - 5;
-          if (rod.y < 285) rod.y = 285;
-          rod.drawRod(ctx);
-          break;
       }
     };
     document.onkeyup = e => {
@@ -151,6 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
       
     if ((timer.innerText === "Time: 00")) {
       gameover = true
+      DrawFish(ctx, spacePressed, rod, gameover)
 
       ctx.clearRect(0, 0, 1000, 500);
       ctx.drawImage(background, 0, 0);
@@ -177,6 +158,11 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.closePath();
         const form = submitScore(ref, rod.score);
         mainContent.appendChild(form)
+      } else {
+        ctx.fillStyle = "#FE9D48";
+        ctx.font = "48px Permanent Marker";
+        ctx.fillText("Press R To Try Again", 200, 80);
+        ctx.closePath();
       }
     }
   }
@@ -185,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gameTimer = false,
     gameover = false,
     highscore = false
-    timerSecs = 59
+    // timerSecs = 59
     span.innerText = "60"
     timer.innerHTML = ""
     timer.innerText = "Time: ";
@@ -195,7 +181,6 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("keydown", (e)=> {
     if (e.keyCode === 83 && !start) {
       start = true
-      // delete gameStart["gameosver"];
       draw();
     } else if (e.keyCode === 82 && (gameover && !highscore)) {
       gameRestart()
