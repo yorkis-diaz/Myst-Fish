@@ -30,35 +30,35 @@ class StandardFish {
     this.id = Math.random() * 10000;
     }
 
-    moveFish() {
-        if (this.direction === 0) {
-            this.x = this.x + this.dx
-            if (this.x >= 950) {
-                this.direction = 1
-                this.fishImage.src = leftFish;
-            }
-        } else {
-            this.x = this.x - this.dx
-            if (this.x <= 10) {
-                this.direction = 0
-                this.fishImage.src = rightFish;
-            }
-        }
+  moveFish() {
+    if (this.direction === 0) {
+      this.x = this.x + this.dx
+      if (this.x >= 950) {
+        this.direction = 1
+        this.fishImage.src = leftFish;
+      }
+    } else {
+      this.x = this.x - this.dx
+      if (this.x <= 10) {
+        this.direction = 0
+        this.fishImage.src = rightFish;
+      }
     }
+  }
 
-    detectCollision(rod) {
-        let collision = false
-        const fishTotalLength = this.x + this.width
-        const fishTotalHeight = this.y + this.height
-        if (rod.rodX >= this.x &&
-            rod.rodX <= fishTotalLength &&
-            rod.y >= (this.y + 10) &&
-            rod.y <= fishTotalHeight
-            ) {
-            collision = true
-        }
-        return collision;
+  detectCollision(rod) {
+    let collision = false
+    const fishTotalLength = this.x + this.width
+    const fishTotalHeight = this.y + this.height
+    if (rod.rodX >= this.x &&
+      rod.rodX <= fishTotalLength &&
+      rod.y >= (this.y + 10) &&
+      rod.y <= fishTotalHeight
+      ) {
+      collision = true
     }
+    return collision;
+  }
 }
 
 class MediumFish {
