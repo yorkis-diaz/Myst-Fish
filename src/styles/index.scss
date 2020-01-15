@@ -1,9 +1,17 @@
 body {
-    background-image: url("../assets/images/full-lake-dusk.jpg");
+    background-image:  linear-gradient(180deg, rgb(212, 133, 64) 15%, #1E141D 85%);
     background-repeat: no-repeat;
     background-size: cover;
-    overflow: hidden;
     background-color: #1D131D;
+    overflow-x: hidden;
+    min-width: 1000px;
+    position: relative;
+}
+
+.game-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap-reverse;
 }
 
 .header-container {
@@ -18,10 +26,11 @@ h3 {
     font-size: 25px;
 }
 
-h1 {
+#main-content > h1 {
     text-align: center;
     width: 1000px;
     margin: 0 auto;
+    font-family: Permanent Marker;
 }
 
 canvas {
@@ -56,7 +65,10 @@ canvas {
 
 #main-content {
     position: relative;
+    margin: 0 5px;
 }
+
+
 
 .score-form {
    position: absolute;
@@ -86,23 +98,19 @@ canvas {
 .score-form > h3 {
     color: red;
     font-size: 17px;
-    position: absolute;
     top: 0;
 }
 
 .leaderboard-container {
-    position: absolute;
-    bottom: 50px;
-    right: 0;
     background-color: #1E141D;
-    width: 15%;
+    width: 200px;
     height: 60%;
-    overflow: hidden;
 }
 
 .leaderboard-container > h1 {
-    color: #FE6C91;
+    color: white;
     width: 100%;
+    font-family: Permanent Marker;
 }
 
 .leaderboard-container > ol {
@@ -110,10 +118,11 @@ canvas {
     height: 100%;
     font-family: Open Sans;
     font-weight: bold;
+    line-height: 2em;
 }
 
 #leaderboard > li {
-    color: #C7709A;
+    color: white;
     width: 100%;
     padding: 5px 0;
     font-size: 20px;
@@ -121,29 +130,26 @@ canvas {
 
 .instructions {
     background-color: #1D131D;
-    position: absolute;
-    left: 0;
-    bottom: 50px;
-    width: 15%;
+    width: 200px;
     height: 60%;
-    overflow: hidden;
 }
 
 .instructions > h1 {
     background-color: #1D131D;
-    color: #FE6C91;
-    width: 100%;
+    color: white;
+    width: 95%;
+    font-family: Permanent Marker;
 }
 
-.instructions > p {
-    color: #C7709A;
+.instructions > ul {
+    color: white;
     font-size: 20px;
     line-height: 1.5em;
 }
 
 .dev-info {
     display: flex;
-    margin: 0 auto;
+    margin: 10px auto;
     width: 50%;
 }
 
@@ -151,4 +157,18 @@ canvas {
     font-size: 20px;
     color: white;
     margin-right: 10%;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: Permanent Marker;
+}
+
+.dev-info > a:hover {
+    color: #CA803E;
+}
+
+.byline {
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 17px;
 }

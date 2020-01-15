@@ -1,8 +1,4 @@
 function Timer (timer, timerSecs, rod) {
-    // timer.innerText = 'Time: '
-    // let span = document.createElement('span')
-    // span.innerText = '60'
-    // timer.appendChild(span)
     const timerCountdown = setInterval(() => {
         rod;
         let countdown = `Time: `

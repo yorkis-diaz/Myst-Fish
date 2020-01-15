@@ -15,9 +15,9 @@ class StandardFish {
         this.y = 330 + Math.random() * 120;
         this.width = 30
         this.height = 25
-        this.score = 20
+        this.score = 200
         this.type = "standard"
-        this.time = 2
+        this.time = 1
         this.alive = true
         this.direction = Math.floor(Math.random() * 2)
         this.dx = 1 + Math.floor(Math.random() * 2);
@@ -68,7 +68,7 @@ class MediumFish {
     this.width = 80;
     this.height = 39;
     this.score = 50;
-    this.time = 3
+    this.time = 2
     this.alive = true
     this.type = "medium";
     this.direction = Math.floor(Math.random() * 2);
@@ -125,7 +125,7 @@ class SickFish {
     this.alive = true
     this.type = "sick";
     this.direction = Math.floor(Math.random() * 2);
-    this.dx = 1 + Math.floor(Math.random() * 2);
+    this.dx = 2;
     this.fishImage = new Image();
     if (this.direction === 0) {
       this.fishImage.src = rightSickFish;
@@ -185,11 +185,11 @@ class MystFish {
     this.width = 150;
     this.height = 40;
     this.score = 100;
-    this.time = 6
+    this.time = 4
     this.alive = true
     this.type = "myst";
     this.direction = Math.floor(Math.random() * 2);
-    this.dx = 1 + Math.floor(Math.random() * 2);
+    this.dx = 2;
     this.fishImage = new Image();
     if (this.direction === 0) {
       this.fishImage.src = rightMyst;
@@ -230,12 +230,9 @@ class MystFish {
   }
 }
 
+let level3 = false
 
-const levelChecker = {
-  level3: false
-}
-
-const FishArray = {}
+let FishArray = {}
 
 for (let i = 0; i < 10; ++i) {
   const standardFish = new StandardFish;
@@ -264,16 +261,16 @@ function countSick () {
   return Object.values(FishArray).filter(fish => fish instanceof SickFish).length
 }
 
-function DrawFish(ctx, spacePressed, rod) {
-  if (rod.score >= 1000 && ("level3" in levelChecker)) {
-   levelChecker.level3 = true
-  }
-  if (levelChecker.level3) {
+function DrawFish(ctx, spacePressed, rod, gameover) {
+
+
+  if (rod.score >= 800 && !level3 && !gameover) {
+    Object.values(FishArray).every(fish => fish.dx = fish.dx + 1)
     const sickFish = new SickFish
     const mystFish = new MystFish();
     FishArray[mystFish.id] = mystFish;
     FishArray[sickFish.id] = sickFish;
-    delete levelChecker["level3"]
+    level3 = true
   }
 
   Object.values(FishArray).forEach(fish => {
@@ -315,7 +312,7 @@ function DrawFish(ctx, spacePressed, rod) {
 
           delete FishArray[fish.id];
 
-          if (rod.score > 1000 && countSick() < 4) {
+          if (rod.score > 1000 && countSick() < 5) {
             const respawn = respawnSickOrMedium()
             FishArray[respawn.id] = respawn
           } else {
@@ -330,17 +327,23 @@ function DrawFish(ctx, spacePressed, rod) {
           respawnMystFish()
         }
         if (collided && fish.type === "sick") {
-          // rod.score = rod.score + fish.score;
           rod.time = fish.time;
-          fish.alive = false
-          fish.bellyUp()
-          // delete FishArray[fish.id];
-          
           // const respawnSick = new SickFish
           // FishArray[respawnSick.id] = respawnSick
+          fish.alive = false
+          // fish.bellyUp()
+          
         }
       }
   })
+  if (gameover) {
+    level3 = false
+    FishArray = {}
+    for (let i = 0; i < 10; ++i) {
+      const standardFish = new StandardFish;
+      FishArray[standardFish.id] = standardFish
+    }
+  }
 }
 
 export default DrawFish;

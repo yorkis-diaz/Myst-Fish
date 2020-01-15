@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./dist/main.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Permanent+Marker&display=swap" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/7.6.1/firebase-app.js"></script>
@@ -11,38 +12,40 @@
 </head>
 <body>
     <script src="./dist/main.js"></script>
-        
-    <h1>Myst Fish</h1>
-    <div class="headers">
-        <h3 id="user-score">Score: 0</h3>
-        <h3 id="timer"></h3>
-    </div>
-    <div class="instructions">
-        <h1>How To Play</h1>
-        <p>
-            s: To start/To restart when gameover <br>
-            Left Arrow/Right Arrow: To move fisherman Left or Right <br>
-            Up Arrow/Down Arrow: To move fishing rod Up or Down <br>
-            Hold Shift: To increase Fisherman/Rod movement speed <br>
-            Tap Spacebar: To capture fish
-        </p>
-    </div>
-    <div id="main-content">
-        <canvas id="myCanvas" height="500" width="1000"></canvas>
-        <div class="dev-info">
-            <a href="#">Porfolio</a>
-            <a href="https://www.linkedin.com/in/yorkis-diaz-596958196/">LinkedIn</a>
-            <a href="https://angel.co/yorkis-diaz">AngelList</a>
-            <a href="https://github.com/yorkis-diaz">Git</a>
+     
+    <main class="game-container">
+        <div class="instructions">
+            <h1>How To Play</h1>
+            <ul>
+                <li> S: To start/To restart when gameover </li>
+                <li>Left Arrow/Right Arrow: To move fisherman Left or Right </li>
+                <li>Up Arrow/Down Arrow: To move fishing rod Up or Down </li>
+                <li>Hold Shift: To increase Fisherman/Rod movement speed </li>
+                <li>Tap Spacebar: To capture fish</li>
+            </ul>
         </div>
-    </div>
-    
-    </canvas>
-    <div class="leaderboard-container">
-        <h1>Leaderboard</h1>
-        <ol id="leaderboard">   
-        </ol> 
-    </div>
-    
+        <div id="main-content">
+            <h1>Myst Fish</h1>
+            <div class="headers">
+                <h3 id="user-score">Score: 0</h3>
+                <h3 id="timer"></h3>
+            </div>
+            <canvas id="myCanvas" height="500" width="1000"></canvas>
+            <div class="dev-info">
+                <a target="_blank" href="https://yorkisdiaz.com/">Porfolio</a>
+                <a target="_blank" href="https://www.linkedin.com/in/yorkis-diaz-596958196/">LinkedIn</a>
+                <a target="_blank" href="https://angel.co/yorkis-diaz">AngelList</a>
+                <a target="_blank" href="https://github.com/yorkis-diaz">Git</a>
+            </div>
+            <byline class="byline">Developed By: Yorkis Diaz, Software Engineer based in New York, NY</byline>
+        </div>
+        
+        </canvas>
+        <div class="leaderboard-container">
+            <h1>Leaderboard</h1>
+            <ol id="leaderboard">   
+            </ol> 
+        </div>
+    </main>
 </body>
 </html>
