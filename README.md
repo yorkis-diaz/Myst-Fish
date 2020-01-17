@@ -57,3 +57,7 @@ detectCollision(rod) {
     return collision;
 }
 ```
+
+# Features
+
+* 
