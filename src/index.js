@@ -1,10 +1,11 @@
 import './styles/index.scss';
 import Rod from "./scripts/rod";
 import DrawFish from "./scripts/fish";
-import splash from "./assets/images/splash-lake-dusk.jpg"
+// import splash from "./assets/images/splash-lake-dusk.jpg"
 import backgroundImage from "./assets/images/lake-dusk.jpg";
 import Timer from './scripts/timer';
-import firebase from "firebase";
+import firebase from "@firebase/app";
+import '@firebase/database';
 import firebaseConfig from './config/firebase';
 import submitScore from './scripts/submit_score';
 import checkScores from './scripts/check_scoreboard';
@@ -12,7 +13,7 @@ import checkScores from './scripts/check_scoreboard';
 
 document.addEventListener("DOMContentLoaded", () => {
   firebase.initializeApp(firebaseConfig);
-  firebase.analytics(firebase);
+  // firebase.analytics(firebase);
   const database = firebase.database();
   const ref = database.ref('scores')
   let leaderScores = {}
@@ -23,7 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const leaderboard = document.getElementById("leaderboard");
   const mainContent = document.getElementById("main-content")
 
-  // Database function
+  const ctx = canvas.getContext("2d");
+
   ref.orderByChild("score").limitToLast(10).on("value", snapshot => {
     if (leaderboard.childElementCount > 0) {
       for(let i = leaderboard.childNodes.length - 1; i >= 0; --i) {
@@ -43,7 +45,6 @@ document.addEventListener("DOMContentLoaded", () => {
       leaderboard.appendChild(scoreLi)
     })
   });
-
   const background = new Image();
   background.src = backgroundImage;
 
@@ -52,18 +53,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let span = document.createElement("span");
   span.innerText = "60";
   timer.appendChild(span);
-
-  const ctx = canvas.getContext("2d");
   
   background.onload = () => {
     ctx.drawImage(background, 0, 0);
-    ctx.beginPath();
+    // ctx.beginPath();
     ctx.fillStyle = "#FE9D48";
     ctx.font = "300 48px Permanent Marker";
     ctx.fillText("Press  S  To START", 200, 150);
-    ctx.closePath();
+    // ctx.closePath();
   }
   
+
   // let x = 100;
   // let y = 250;
   let rod = new Rod();
