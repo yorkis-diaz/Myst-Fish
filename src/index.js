@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 10
+  let timerSecs = 59
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
