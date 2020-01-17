@@ -58,6 +58,8 @@ detectCollision(rod) {
 }
 ```
 
-# Features
+## Features
 
-* 
+* Live updating leaderboard incorporated with Firebase Realtime Database.
+* Collision Detection that enables each fish to be captured. 
+* Dynamic canvas that reacts to the game state to render smooth and efficient game view.   
