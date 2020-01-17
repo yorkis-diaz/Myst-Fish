@@ -1,4 +1,4 @@
-function submitScore(ref, score) {
+function submitScore(ref, score, resetGame) {
     let name = ""
     const form = document.createElement('form')
     const inputName = document.createElement('input')
@@ -20,7 +20,7 @@ function submitScore(ref, score) {
                 score: score
             }
             ref.push(data).then(() => {
-                window.location.reload()
+                resetGame()
             })
         }
     })

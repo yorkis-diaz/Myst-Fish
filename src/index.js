@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const background = new Image();
   background.src = backgroundImage;
 
-  let timerSecs = 59
+  let timerSecs = 10
   timer.innerText = "Time: ";
   let span = document.createElement("span");
   span.innerText = "60";
@@ -78,7 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
     gameover = false,
     highscore = false
 
-  
   
   
   
@@ -141,8 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
       ctx.fillText("Game Over", 300, 150);
       ctx.closePath();
     } 
-    
-
 
     const id = requestAnimationFrame(draw)
     if (gameover) {
@@ -156,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ctx.font = "48px Permanent Marker";
         ctx.fillText("NEW HIGH SCORE!", 200, 80);
         ctx.closePath();
-        const form = submitScore(ref, rod.score);
+        const form = submitScore(ref, rod.score, resetGame);
         mainContent.appendChild(form)
       } else {
         ctx.fillStyle = "#FE9D48";
@@ -178,6 +175,25 @@ document.addEventListener("DOMContentLoaded", () => {
     timer.appendChild(span)
     // ctx.drawImage(background, 0, 0);
   }
+
+  const resetGame = () => {
+    rod = new Rod;
+    start = false;
+    gameTimer = false;
+    gameover = false;
+    highscore = false;
+    mainContent.removeChild(mainContent.children[4])
+    span.innerText = "60";
+    timer.innerHTML = "";
+    timer.innerText = "Time: ";
+    timer.appendChild(span);
+    ctx.clearRect(0, 0, 1000, 500);
+    ctx.drawImage(background, 0, 0);
+    ctx.fillStyle = "#FE9D48";
+    ctx.font = "300 48px Permanent Marker";
+    ctx.fillText("Press  S  To START", 200, 150);
+  }
+
   window.addEventListener("keydown", (e)=> {
     if (e.keyCode === 83 && !start) {
       start = true
