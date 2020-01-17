@@ -11,7 +11,6 @@ body {
 .game-container {
     width: 100%;
     display: flex;
-    flex-wrap: wrap-reverse;
     justify-content: center;
 }
 
@@ -106,6 +105,7 @@ canvas {
     background-color: #1E141D;
     width: 200px;
     height: 60%;
+    padding: 0 30px;
 }
 
 .leaderboard-container > h1 {
@@ -132,6 +132,7 @@ canvas {
 .instructions {
     background-color: #1D131D;
     width: 200px;
+    padding: 0 30px;
     height: 60%;
 }
 
@@ -146,6 +147,7 @@ canvas {
     color: white;
     font-size: 20px;
     line-height: 1.5em;
+    font-family: Open Sans;
 }
 
 .dev-info {
@@ -172,4 +174,11 @@ canvas {
     text-align: center;
     color: white;
     font-size: 17px;
+}
+
+@media (max-width: 1440px) {
+    .game-container {
+       flex-wrap: wrap;; 
+    }
+    
 }
