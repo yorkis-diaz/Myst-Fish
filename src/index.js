@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let start = false,
     gameTimer = false,
     gameover = false,
-    highscore = false
+    highscore = false,
+    game_on = false
 
   
   
@@ -156,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const form = submitScore(ref, rod.score, resetGame);
         mainContent.appendChild(form)
       } else {
+        game_on = false
         ctx.fillStyle = "#FE9D48";
         ctx.font = "48px Permanent Marker";
         ctx.fillText("Press R To Try Again", 200, 80);
@@ -168,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gameTimer = false,
     gameover = false,
     highscore = false
+    game_on = true
     // timerSecs = 59
     span.innerText = "60"
     timer.innerHTML = ""
@@ -182,6 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gameTimer = false;
     gameover = false;
     highscore = false;
+    game_on = false
     mainContent.removeChild(mainContent.children[4])
     span.innerText = "60";
     timer.innerHTML = "";
@@ -197,10 +201,17 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("keydown", (e)=> {
     if (e.keyCode === 83 && !start) {
       start = true
+      game_on = true
       draw();
     } else if (e.keyCode === 82 && (gameover && !highscore)) {
-      gameRestart()
-      draw()
+      gameRestart();
+      draw();
+    }
+  })
+
+  document.body.addEventListener('keydown', (e) => {
+    if ((game_on && e.keyCode === 40) || (game_on && e.keyCode === 38)) {
+      e.preventDefault();
     }
   })
 })
