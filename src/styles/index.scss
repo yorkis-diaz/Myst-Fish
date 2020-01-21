@@ -133,6 +133,8 @@ canvas {
     background-color: #1D131D;
     width: 200px;
     padding: 0 30px;
+    padding-right: 30px;
+    padding-left: 0;
     height: 60%;
 }
 
@@ -141,6 +143,7 @@ canvas {
     color: white;
     width: 95%;
     font-family: Permanent Marker;
+    text-align: center;
 }
 
 .instructions > ul {
@@ -148,6 +151,13 @@ canvas {
     font-size: 20px;
     line-height: 1.5em;
     font-family: Open Sans;
+    list-style: none;
+    text-align: center;
+}
+
+
+.li-head {
+    text-decoration: underline;
 }
 
 .dev-info {
@@ -173,12 +183,66 @@ canvas {
     width: 100%;
     text-align: center;
     color: white;
-    font-size: 17px;
+    font-size: 14px;
 }
 
-@media (max-width: 1440px) {
+footer {
+    text-align: center;
+    background-color: black;
+    margin-top: 5%;
+    padding: 3px 0;
+}
+
+@media (max-width: 1340px) {
     .game-container {
-       flex-wrap: wrap;; 
+       flex-direction: column;
+       transition: all;
     }
+
+    .dev-info {
+        margin-bottom: 25px;
+    }
+
+    .instructions {
+        background-color: #1D131D;
+        width: 1000px;
+        margin: 0 auto;
+        border-radius: 10px;
+        padding: 0;
+    }
+
+    .instructions > ul {
+        text-align: center;
+        list-style: none;
+    }
+
+    .instructions > h1 {
+        text-align: center;
+    }
+
+    .li-head {
+        text-decoration: underline;
+        
+    }
+
+    .leaderboard-container {
+        background-color: #1E141D;
+        width: 1000px;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+
+    .leaderboard-container {
+        text-align: center;
+        padding: 0;
+    }
+
+    .leaderboard-container > ol {
+        text-align: center;
+        width: 90%;
+        margin: 0 auto;
+    }
+
+
     
 }
