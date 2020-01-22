@@ -12,6 +12,7 @@ body {
     width: 100%;
     display: flex;
     justify-content: center;
+    margin: 10% auto;
 }
 
 .header-container {
@@ -31,6 +32,9 @@ h3 {
     width: 1000px;
     margin: 0 auto;
     font-family: Permanent Marker;
+    position: absolute;
+    top: -15%;
+
 }
 
 canvas {
@@ -46,6 +50,8 @@ canvas {
     width: 1000px;
     margin: 0 auto;
     justify-content: space-between;
+    position: absolute;
+    top: -6%;
 }
 
 #user-score {
@@ -66,7 +72,9 @@ canvas {
 #main-content {
     position: relative;
     margin: 0 5px;
+    
 }
+
 
 
 
@@ -104,7 +112,7 @@ canvas {
 .leaderboard-container {
     background-color: #1E141D;
     width: 200px;
-    height: 60%;
+    height: 500px;
     padding: 0 30px;
 }
 
@@ -112,6 +120,7 @@ canvas {
     color: white;
     width: 100%;
     font-family: Permanent Marker;
+    margin: 10px 0;
 }
 
 .leaderboard-container > ol {
@@ -132,10 +141,10 @@ canvas {
 .instructions {
     background-color: #1D131D;
     width: 200px;
-    padding: 0 30px;
+    padding: 0 20px;
     padding-right: 30px;
     padding-left: 0;
-    height: 60%;
+    height: 500px;
 }
 
 .instructions > h1 {
@@ -144,15 +153,16 @@ canvas {
     width: 95%;
     font-family: Permanent Marker;
     text-align: center;
+    line-height: 1.225em;
 }
 
 .instructions > ul {
     color: white;
-    font-size: 20px;
+    font-size: 17px;
     line-height: 1.5em;
     font-family: Open Sans;
     list-style: none;
-    text-align: center;
+    padding-left: 20px;
 }
 
 
@@ -199,8 +209,21 @@ footer {
        transition: all;
     }
 
+    .headers {
+        display: flex;
+        width: 1000px;
+        margin: 0 auto;
+        justify-content: space-between;
+        position: relative ;
+    }
+
+    #main-content > h1{
+        position: relative;
+    }
+
     .dev-info {
         margin-bottom: 25px;
+        position: relative;
     }
 
     .instructions {
@@ -209,6 +232,7 @@ footer {
         margin: 0 auto;
         border-radius: 10px;
         padding: 0;
+        height: 60%;
     }
 
     .instructions > ul {
@@ -230,6 +254,7 @@ footer {
         width: 1000px;
         margin: 0 auto;
         border-radius: 10px;
+        height: 60%;
     }
 
     .leaderboard-container {
