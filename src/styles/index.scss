@@ -1,3 +1,7 @@
+html {
+    height: 100%;
+}
+
 body {
     background-image:  linear-gradient(180deg, rgb(212, 133, 64) 15%, #1E141D 85%);
     background-repeat: no-repeat;
@@ -6,13 +10,16 @@ body {
     overflow-x: hidden;
     min-width: 1000px;
     position: relative;
+    margin: 0;
+    height: inherit;
 }
 
 .game-container {
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 10% auto;
+    margin: 0 auto;
+    padding-top: 10%;
 }
 
 .header-container {
@@ -201,6 +208,9 @@ footer {
     background-color: black;
     margin-top: 5%;
     padding: 3px 0;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 @media (max-width: 1440px) {
@@ -268,6 +278,9 @@ footer {
         margin: 0 auto;
     }
 
+    footer {
+        position: relative;
+    }
 
     
 }
