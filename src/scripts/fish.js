@@ -328,10 +328,7 @@ function DrawFish(ctx, spacePressed, rod, gameover) {
         }
         if (collided && fish.type === "sick") {
           rod.time = fish.time;
-          // const respawnSick = new SickFish
-          // FishArray[respawnSick.id] = respawnSick
           fish.alive = false
-          // fish.bellyUp()
           
         }
       }

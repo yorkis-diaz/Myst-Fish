@@ -29,9 +29,7 @@ class Rod {
   }
 
   drawRod(ctx) {
-    // ctx.beginPath();
     ctx.drawImage(this.image, this.x, 200);
-    // ctx.closePath();
 
     ctx.beginPath();
     ctx.moveTo(this.rodX, 200);

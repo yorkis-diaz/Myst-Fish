@@ -1,7 +1,6 @@
 import './styles/index.scss';
 import Rod from "./scripts/rod";
 import DrawFish from "./scripts/fish";
-// import splash from "./assets/images/splash-lake-dusk.jpg"
 import backgroundImage from "./assets/images/lake-dusk.jpg";
 import Timer from './scripts/timer';
 import firebase from "@firebase/app";
@@ -13,7 +12,6 @@ import checkScores from './scripts/check_scoreboard';
 
 document.addEventListener("DOMContentLoaded", () => {
   firebase.initializeApp(firebaseConfig);
-  // firebase.analytics(firebase);
   const database = firebase.database();
   const ref = database.ref('scores')
   let leaderScores = {}
@@ -56,22 +54,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
   background.onload = () => {
     ctx.drawImage(background, 0, 0);
-    // ctx.beginPath();
     ctx.fillStyle = "#FE9D48";
     ctx.font = "300 48px Permanent Marker";
     ctx.fillText("Press  S  To START", 200, 150);
-    // ctx.closePath();
   }
   
-
-  // let x = 100;
-  // let y = 250;
   let rod = new Rod();
   let spacePressed = false
-
-  // const gameStart = {
-  //   start: false
-  // }
 
   let start = false,
     gameTimer = false,
@@ -169,14 +158,12 @@ document.addEventListener("DOMContentLoaded", () => {
     rod = new Rod();
     gameTimer = false,
     gameover = false,
-    highscore = false
-    game_on = true
-    // timerSecs = 59
-    span.innerText = "60"
-    timer.innerHTML = ""
+    highscore = false;
+    game_on = true;
+    span.innerText = "60";
+    timer.innerHTML = "";
     timer.innerText = "Time: ";
-    timer.appendChild(span)
-    // ctx.drawImage(background, 0, 0);
+    timer.appendChild(span);
   }
 
   const resetGame = () => {
