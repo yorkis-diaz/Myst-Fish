@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
   document.body.addEventListener('keydown', (e) => {
-    if ((game_on && e.keyCode === 40) || (game_on && e.keyCode === 38)) {
+    if ((game_on && e.keyCode === 40) || (game_on && e.keyCode === 38) || game_on && e.keyCode === 32) {
       e.preventDefault();
     }
   })
